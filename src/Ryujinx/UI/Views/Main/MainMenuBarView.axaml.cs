@@ -37,20 +37,20 @@ namespace Ryujinx.Ava.UI.Views.Main
             ToggleFileTypesMenuItem.ItemsSource = GenerateToggleFileTypeItems();
             ChangeLanguageMenuItem.ItemsSource = GenerateLanguageMenuItems();
 
-            MiiAppletMenuItem.Command = new AsyncRelayCommand(OpenMiiApplet);
-            CloseRyujinxMenuItem.Command = new RelayCommand(CloseWindow);
-            OpenSettingsMenuItem.Command = new AsyncRelayCommand(OpenSettings);
-            PauseEmulationMenuItem.Command = new RelayCommand(() => ViewModel.AppHost?.Pause());
-            ResumeEmulationMenuItem.Command = new RelayCommand(() => ViewModel.AppHost?.Resume());
-            StopEmulationMenuItem.Command = new AsyncRelayCommand(() => ViewModel.AppHost?.ShowExitPrompt().OrCompleted());
-            CheatManagerMenuItem.Command = new AsyncRelayCommand(OpenCheatManagerForCurrentApp);
-            InstallFileTypesMenuItem.Command = new AsyncRelayCommand(InstallFileTypes);
-            UninstallFileTypesMenuItem.Command = new AsyncRelayCommand(UninstallFileTypes);
-            XciTrimmerMenuItem.Command = new AsyncRelayCommand(() => XCITrimmerWindow.Show(ViewModel));
-            AboutWindowMenuItem.Command = new AsyncRelayCommand(AboutWindow.Show);
-            CompatibilityListMenuItem.Command = new AsyncRelayCommand(CompatibilityList.Show);
+            MiiAppletMenuItem.Command = Commands.Create(OpenMiiApplet);
+            CloseRyujinxMenuItem.Command = Commands.Create(CloseWindow);
+            OpenSettingsMenuItem.Command = Commands.Create(OpenSettings);
+            PauseEmulationMenuItem.Command = Commands.Create(() => ViewModel.AppHost?.Pause());
+            ResumeEmulationMenuItem.Command = Commands.Create(() => ViewModel.AppHost?.Resume());
+            StopEmulationMenuItem.Command = Commands.Create(() => ViewModel.AppHost?.ShowExitPrompt().OrCompleted());
+            CheatManagerMenuItem.Command = Commands.CreateSilentFail(OpenCheatManagerForCurrentApp);
+            InstallFileTypesMenuItem.Command = Commands.Create(InstallFileTypes);
+            UninstallFileTypesMenuItem.Command = Commands.Create(UninstallFileTypes);
+            XciTrimmerMenuItem.Command = Commands.Create(XCITrimmerWindow.Show);
+            AboutWindowMenuItem.Command = Commands.Create(AboutWindow.Show);
+            CompatibilityListMenuItem.Command = Commands.Create(CompatibilityList.Show);
             
-            UpdateMenuItem.Command = new AsyncRelayCommand(async () =>
+            UpdateMenuItem.Command = Commands.Create(async () =>
             {
                 if (Updater.CanUpdate(true))
                     await Updater.BeginUpdateAsync(true);
@@ -58,12 +58,12 @@ namespace Ryujinx.Ava.UI.Views.Main
 
             FaqMenuItem.Command = 
                 SetupGuideMenuItem.Command = 
-                    LdnGuideMenuItem.Command = new RelayCommand<string>(OpenHelper.OpenUrl);
+                    LdnGuideMenuItem.Command = Commands.Create<string>(OpenHelper.OpenUrl);
             
             WindowSize720PMenuItem.Command = 
                 WindowSize1080PMenuItem.Command = 
                     WindowSize1440PMenuItem.Command = 
-                        WindowSize2160PMenuItem.Command = new RelayCommand<string>(ChangeWindowSize);
+                        WindowSize2160PMenuItem.Command = Commands.Create<string>(ChangeWindowSize);
         }
 
         private IEnumerable<CheckBox> GenerateToggleFileTypeItems() =>
@@ -138,14 +138,14 @@ namespace Ryujinx.Ava.UI.Views.Main
             ViewModel.LoadConfigurableHotKeys();
         }
 
-        public static readonly AppletMetadata MiiApplet = new("miiEdit", 0x0100000000001009);
-
+        public AppletMetadata MiiApplet => new(ViewModel.ContentManager, "miiEdit", 0x0100000000001009);
+        
         public async Task OpenMiiApplet()
         {
-            if (MiiApplet.CanStart(ViewModel.ContentManager, out var appData, out var nacpData))
-            {
-                await ViewModel.LoadApplication(appData, ViewModel.IsFullScreen || ViewModel.StartGamesInFullscreen, nacpData);
-            }
+            if (!MiiApplet.CanStart(out var appData, out var nacpData)) 
+                return;
+            
+            await ViewModel.LoadApplication(appData, ViewModel.IsFullScreen || ViewModel.StartGamesInFullscreen, nacpData);
         }
 
         public async Task OpenCheatManagerForCurrentApp()

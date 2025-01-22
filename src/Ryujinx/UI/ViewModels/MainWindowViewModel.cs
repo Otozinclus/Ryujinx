@@ -38,7 +38,6 @@ using Ryujinx.HLE.HOS.Services.Account.Acc;
 using Ryujinx.HLE.HOS.Services.Nfc.AmiiboDecryption;
 using Ryujinx.HLE.UI;
 using Ryujinx.Input.HLE;
-using Silk.NET.Vulkan;
 using SkiaSharp;
 using System;
 using System.Collections.Generic;
@@ -489,6 +488,19 @@ namespace Ryujinx.Ava.UI.ViewModels
             }
         }
 
+        public bool StartGamesWithoutUI
+        {
+            get => ConfigurationState.Instance.UI.StartNoUI;
+            set
+            {
+                ConfigurationState.Instance.UI.StartNoUI.Value = value;
+
+                ConfigurationState.Instance.ToFileFormat().SaveConfig(Program.ConfigurationPath);
+
+                OnPropertyChanged();
+            }
+        }
+
         public bool ShowConsole
         {
             get => ConfigurationState.Instance.UI.ShowConsole;
@@ -625,6 +637,7 @@ namespace Ryujinx.Ava.UI.ViewModels
                     ApplicationSort.FileSize => LocaleManager.Instance[LocaleKeys.GameListHeaderFileSize],
                     ApplicationSort.Path => LocaleManager.Instance[LocaleKeys.GameListHeaderPath],
                     ApplicationSort.Favorite => LocaleManager.Instance[LocaleKeys.CommonFavorite],
+                    ApplicationSort.TitleId => LocaleManager.Instance[LocaleKeys.DlcManagerTableHeadingTitleIdLabel],
                     _ => string.Empty,
                 };
             }
@@ -695,6 +708,7 @@ namespace Ryujinx.Ava.UI.ViewModels
         public IHostUIHandler UiHandler { get; internal set; }
         public bool IsSortedByFavorite => SortMode == ApplicationSort.Favorite;
         public bool IsSortedByTitle => SortMode == ApplicationSort.Title;
+        public bool IsSortedByTitleId => SortMode == ApplicationSort.TitleId;
         public bool IsSortedByDeveloper => SortMode == ApplicationSort.Developer;
         public bool IsSortedByLastPlayed => SortMode == ApplicationSort.LastPlayed;
         public bool IsSortedByTimePlayed => SortMode == ApplicationSort.TotalTimePlayed;
@@ -727,6 +741,7 @@ namespace Ryujinx.Ava.UI.ViewModels
                 ApplicationSort.FileSize        => CreateComparer(IsAscending, app => app.FileSize),
                 ApplicationSort.Path            => CreateComparer(IsAscending, app => app.Path),
                 ApplicationSort.Favorite        => CreateComparer(IsAscending, app => new AppListFavoriteComparable(app)),
+                ApplicationSort.TitleId         => CreateComparer(IsAscending, app => app.Id),
                 _ => null,
 #pragma warning restore IDE0055
             };
@@ -1196,6 +1211,11 @@ namespace Ryujinx.Ava.UI.ViewModels
             StartGamesInFullscreen = !StartGamesInFullscreen;
         }
 
+        public void ToggleStartGamesWithoutUI()
+        {
+            StartGamesWithoutUI = !StartGamesWithoutUI;
+        }
+
         public void ToggleShowConsole()
         {
             ShowConsole = !ShowConsole;
@@ -1642,10 +1662,7 @@ namespace Ryujinx.Ava.UI.ViewModels
 
         public async Task OpenAmiiboWindow()
         {
-            if (!IsAmiiboRequested)
-                return;
-
-            if (AppHost.Device.System.SearchingForAmiibo(out int deviceId))
+            if (AppHost.Device.System.SearchingForAmiibo(out int deviceId) && IsGameRunning)
             {
                 string titleId = AppHost.Device.Processes.ActiveApplication.ProgramIdText.ToUpper();
                 AmiiboWindow window = new(ShowAll, LastScannedAmiiboId, titleId);
@@ -1663,10 +1680,7 @@ namespace Ryujinx.Ava.UI.ViewModels
         }
         public async Task OpenBinFile()
         {
-            if (!IsAmiiboRequested)
-                return;
-
-            if (AppHost.Device.System.SearchingForAmiibo(out int deviceId))
+            if (AppHost.Device.System.SearchingForAmiibo(out _) && IsGameRunning)
             {
                 var result = await StorageProvider.OpenFilePickerAsync(new FilePickerOpenOptions
                 {

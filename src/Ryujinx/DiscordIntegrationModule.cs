@@ -1,6 +1,8 @@
 using DiscordRPC;
+using Gommon;
 using Humanizer;
 using Humanizer.Localisation;
+using Ryujinx.Ava.Utilities;
 using Ryujinx.Ava.Utilities.AppLibrary;
 using Ryujinx.Ava.Utilities.Configuration;
 using Ryujinx.Common;
@@ -45,16 +47,7 @@ namespace Ryujinx.Ava
             };
 
             ConfigurationState.Instance.EnableDiscordIntegration.Event += Update;
-            TitleIDs.CurrentApplication.Event += (_, e) =>
-            {
-                if (e.NewValue)
-                    SwitchToPlayingState(
-                        ApplicationLibrary.LoadAndSaveMetaData(e.NewValue),
-                        Switch.Shared.Processes.ActiveApplication
-                    );
-                else 
-                    SwitchToMainState();
-            };
+            TitleIDs.CurrentApplication.Event += (_, e) => Use(e.NewValue);
         }
 
         private static void Update(object sender, ReactiveEventArgs<bool> evnt)
@@ -75,9 +68,21 @@ namespace Ryujinx.Ava
                     _discordClient = new DiscordRpcClient(ApplicationId);
 
                     _discordClient.Initialize();
-                    _discordClient.SetPresence(_discordPresenceMain);
+
+                    Use(TitleIDs.CurrentApplication);
                 }
             }
+        }
+
+        public static void Use(Optional<string> titleId)
+        {
+            if (titleId.TryGet(out string tid))
+                SwitchToPlayingState(
+                    ApplicationLibrary.LoadAndSaveMetaData(tid), 
+                    Switch.Shared.Processes.ActiveApplication
+                );
+            else 
+                SwitchToMainState();
         }
 
         private static void SwitchToPlayingState(ApplicationMetadata appMeta, ProcessResult procRes)
@@ -93,7 +98,7 @@ namespace Ryujinx.Ava
                 },
                 Details = TruncateToByteLength($"Playing {appMeta.Title}"),
                 State = appMeta.LastPlayed.HasValue && appMeta.TimePlayed.TotalSeconds > 5
-                    ? $"Total play time: {appMeta.TimePlayed.Humanize(2, false, maxUnit: TimeUnit.Hour)}"
+                    ? $"Total play time: {ValueFormatUtils.FormatTimeSpan(appMeta.TimePlayed)}"
                     : "Never played",
                 Timestamps = Timestamps.Now
             });
