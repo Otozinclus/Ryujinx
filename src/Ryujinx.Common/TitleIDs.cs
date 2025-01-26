@@ -1,5 +1,6 @@
 using Gommon;
 using Ryujinx.Common.Configuration;
+using Ryujinx.Common.Helper;
 using System;
 using System.Linq;
 using System.Runtime.InteropServices;
@@ -8,7 +9,7 @@ namespace Ryujinx.Common
 {
     public static class TitleIDs
     {
-        public static ReactiveObject<Optional<string>> CurrentApplication { get; set; } = new();
+        public static ReactiveObject<Optional<string>> CurrentApplication { get; } = new();
         
         public static GraphicsBackend SelectGraphicsBackend(string titleId, GraphicsBackend currentBackend)
         {
@@ -21,7 +22,7 @@ namespace Ryujinx.Common
                     return currentBackend;
             }
 
-            if (!(OperatingSystem.IsMacOS() && RuntimeInformation.ProcessArchitecture is Architecture.Arm64))
+            if (!RunningPlatform.IsArmMac)
                 return GraphicsBackend.Vulkan;
 
             return GreatMetalTitles.ContainsIgnoreCase(titleId) ? GraphicsBackend.Metal : GraphicsBackend.Vulkan;

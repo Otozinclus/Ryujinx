@@ -17,7 +17,7 @@ namespace Ryujinx.Ava.Utilities.Configuration
         /// <summary>
         /// The current version of the file format
         /// </summary>
-        public const int CurrentVersion = 60;
+        public const int CurrentVersion = 61;
 
         /// <summary>
         /// Version of the configuration file format
