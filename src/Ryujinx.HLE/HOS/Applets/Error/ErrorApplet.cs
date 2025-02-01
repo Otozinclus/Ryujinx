@@ -5,6 +5,7 @@ using LibHac.FsSystem;
 using LibHac.Ncm;
 using LibHac.Tools.FsSystem;
 using LibHac.Tools.FsSystem.NcaUtils;
+using Ryujinx.Common.Helper;
 using Ryujinx.Common.Logging;
 using Ryujinx.HLE.HOS.Services.Am.AppletAE;
 using Ryujinx.HLE.HOS.SystemState;
@@ -29,9 +30,6 @@ namespace Ryujinx.HLE.HOS.Applets.Error
         private byte[] _errorStorage;
 
         public event EventHandler AppletStateChanged;
-
-        [GeneratedRegex(@"[^\u0000\u0009\u000A\u000D\u0020-\uFFFF]..")]
-        private static partial Regex CleanTextRegex();
 
         public ErrorApplet(Horizon horizon)
         {
@@ -107,7 +105,7 @@ namespace Ryujinx.HLE.HOS.Applets.Error
 
         private static string CleanText(string value)
         {
-            return CleanTextRegex().Replace(value, string.Empty).Replace("\0", string.Empty);
+            return Patterns.CleanText.Replace(value, string.Empty).Replace("\0", string.Empty);
         }
 
         private string GetMessageText(uint module, uint description, string key)
@@ -122,7 +120,7 @@ namespace Ryujinx.HLE.HOS.Applets.Error
 
             if (romfs.FileExists(filePath))
             {
-                using UniqueRef<IFile> binaryFile = new UniqueRef<IFile>();
+                using UniqueRef<IFile> binaryFile = new();
 
                 romfs.OpenFile(ref binaryFile.Ref, filePath.ToU8Span(), OpenMode.Read).ThrowIfFailure();
                 StreamReader reader = new(binaryFile.Get.AsStream(), Encoding.Unicode);
@@ -184,7 +182,7 @@ namespace Ryujinx.HLE.HOS.Applets.Error
             string messageText = Encoding.ASCII.GetString(messageTextBuffer.TakeWhile(b => !b.Equals(0)).ToArray());
             string detailsText = Encoding.ASCII.GetString(detailsTextBuffer.TakeWhile(b => !b.Equals(0)).ToArray());
 
-            List<string> buttons = new();
+            List<string> buttons = [];
 
             // TODO: Handle the LanguageCode to return the translated "OK" and "Details".
 

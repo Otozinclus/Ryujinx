@@ -50,8 +50,8 @@ namespace Ryujinx.Ava.UI.Helpers
 
         private static string Format(AvaLogLevel level, string area, string template, object source, object[] v)
         {
-            StringBuilder result = new StringBuilder();
-            CharacterReader r = new CharacterReader(template.AsSpan());
+            StringBuilder result = new();
+            CharacterReader r = new(template.AsSpan());
             int i = 0;
 
             result.Append('[');

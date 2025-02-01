@@ -64,9 +64,9 @@ namespace Ryujinx.Ava.UI.ViewModels
             Directory.CreateDirectory(Path.Join(AppDataManager.BaseDirPath, "system", "amiibo"));
 
             _amiiboJsonPath = Path.Join(AppDataManager.BaseDirPath, "system", "amiibo", "Amiibo.json");
-            _amiiboList = new List<AmiiboApi>();
-            _amiiboSeries = new ObservableCollection<string>();
-            _amiibos = new AvaloniaList<AmiiboApi>();
+            _amiiboList = [];
+            _amiiboSeries = [];
+            _amiibos = [];
 
             _amiiboLogoBytes = EmbeddedResources.Read("Ryujinx/Assets/UIImages/Logo_Amiibo.png");
 

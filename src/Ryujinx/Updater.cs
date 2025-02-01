@@ -372,7 +372,7 @@ namespace Ryujinx.Ava
 
             for (int i = 0; i < ConnectionCount; i++)
             {
-                list.Add(Array.Empty<byte>());
+                list.Add([]);
             }
 
             for (int i = 0; i < ConnectionCount; i++)
@@ -434,7 +434,8 @@ namespace Ryujinx.Ava
                         // On macOS, ensure that we remove the quarantine bit to prevent Gatekeeper from blocking execution.
                         if (OperatingSystem.IsMacOS())
                         {
-                            using Process xattrProcess = Process.Start("xattr", new List<string> { "-d", "com.apple.quarantine", updateFile });
+                            using Process xattrProcess = Process.Start("xattr", 
+                                [ "-d", "com.apple.quarantine", updateFile ]);
 
                             xattrProcess.WaitForExit();
                         }

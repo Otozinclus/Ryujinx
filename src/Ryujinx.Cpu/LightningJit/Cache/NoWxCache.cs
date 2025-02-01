@@ -231,7 +231,7 @@ namespace Ryujinx.Cpu.LightningJit.Cache
                 _sharedCache.Pointer,
                 SharedCacheSize);
 
-            List<(ulong, ThreadLocalCacheEntry)> toDelete = new();
+            List<(ulong, ThreadLocalCacheEntry)> toDelete = [];
 
             foreach ((ulong address, ThreadLocalCacheEntry entry) in _threadLocalCache)
             {

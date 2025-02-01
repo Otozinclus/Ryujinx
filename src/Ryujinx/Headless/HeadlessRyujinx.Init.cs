@@ -33,7 +33,7 @@ namespace Ryujinx.Headless
         public static void Initialize()
         {
             // Ensure Discord presence timestamp begins at the absolute start of when Ryujinx is launched
-            DiscordIntegrationModule.StartedAt = Timestamps.Now;
+            DiscordIntegrationModule.EmulatorStartedAt = Timestamps.Now;
 
             // Delete backup files after updating.
             Task.Run(Updater.CleanupUpdate);

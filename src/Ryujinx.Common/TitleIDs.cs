@@ -3,7 +3,6 @@ using Ryujinx.Common.Configuration;
 using Ryujinx.Common.Helper;
 using System;
 using System.Linq;
-using System.Runtime.InteropServices;
 
 namespace Ryujinx.Common
 {
@@ -30,10 +29,11 @@ namespace Ryujinx.Common
         
         public static readonly string[] GreatMetalTitles =
         [
-            "010076f0049a2000", // Bayonetta
+            "01009b500007c000", // ARMS
             "0100a5c00d162000", // Cuphead
             "010023800d64a000", // Deltarune
             "01003a30012c0000", // LEGO City Undercover
+            "010048701995e000", // Luigi's Manion 2 HD
             "010028600EBDA000", // Mario 3D World
             "0100152000022000", // Mario Kart 8 Deluxe
             "010075a016a3a000", // Persona 4 Arena Ultimax
@@ -48,10 +48,14 @@ namespace Ryujinx.Common
             "01009bf0072d4000", // Captain Toad: Treasure Tracker
             "01009510001ca000", // Fast RMX
             "01005CA01580E000", // Persona 5 Royale
+            "010015100b514000", // Super Mario Bros. Wonder
             "0100000000010000", // Super Mario Odyssey
 
-            //Isaac claims it has a issue in level 2, but I am not able to replicate it on my M3. More testing would be appreciated:
-            "010015100b514000", // Super Mario Bros. Wonder
+            // Further testing is appreciated, I did not test the entire game:
+            "01007300020fa000", // Astral Chain
+            "010076f0049a2000", // Bayonetta
+            "0100cf5010fec000", // Bayonetta Origins: Cereza and the Lost Demon
+            "0100f4300bf2c000", // New Pokemon Snap
         ];
         
         public static string GetDiscordGameAsset(string titleId) 
@@ -105,6 +109,7 @@ namespace Ryujinx.Common
             "0100b04011742000", // Monster Hunter Rise 
                           
                           //Mario Franchise
+            "010021d00812a000", // Arcade Archives VS. SUPER MARIO BROS.
             "01006d0017f7a000", // Mario & Luigi: Brothership
             "010003000e146000", // Mario & Sonic at the Olympic Games Tokyo 2020
             "010067300059a000", // Mario + Rabbids: Kingdom Battle
@@ -212,32 +217,41 @@ namespace Ryujinx.Common
                           //Misc Games
             "010056e00853a000", // A Hat in Time
             "0100fd1014726000", // Baldurs Gate: Dark Alliance
+            "0100c6800b934000", // Brawlhalla
             "0100dbf01000a000", // Burnout Paradise Remastered
             "0100744001588000", // Cars 3: Driven to Win
             "0100b41013c82000", // Cruis'n Blast
             "010085900337e000", // Death Squared
             "01001b300b9be000", // Diablo III: Eternal Collection
+            "010027400cdc6000", // Divinity Original 2 - Definitive Edition
             "01008c8012920000", // Dying Light Platinum Edition
             "01001cc01b2d4000", // Goat Simulator 3
             "01003620068ea000", // Hand of Fate 2
             "010085500130a000", // Lego City: Undercover
             "010073c01af34000", // LEGO Horizon Adventures
+            "0100d71004694000", // Minecraft
+            "01007430037f6000", // Monopoly
             "0100853015e86000", // No Man's Sky
             "01007bb017812000", // Portal
             "0100abd01785c000", // Portal 2
             "01008e200c5c2000", // Muse Dash
             "01007820196a6000", // Red Dead Redemption
+            "0100e8300a67a000", // Risk
             "01002f7013224000", // Rune Factory 5
             "01008d100d43e000", // Saints Row IV
             "0100de600beee000", // Saints Row: The Third - The Full Package
             "01001180021fa000", // Shovel Knight: Specter of Torment
+            "0100e65002bb8000", // Stardew Valley
             "0100d7a01b7a2000", // Star Wars: Bounty Hunter
             "0100800015926000", // Suika Game
+            "01007ad00013e000", // Super Bomberman R
             "0100e46006708000", // Terraria
+            "0100605008268000", // Titan Quest
             "01000a10041ea000", // The Elder Scrolls V: Skyrim
             "010057a01e4d4000", // TSUKIHIME -A piece of blue glass moon-
             "010080b00ad66000", // Undertale
             "010069401adb8000", // Unicorn Overlord
+            "01005c600ac68000", // Valkyria Chronicles 4
             "0100534009ff2000", // Yonder - The cloud catcher chronicles
         ];
     }
