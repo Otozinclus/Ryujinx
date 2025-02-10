@@ -584,7 +584,7 @@
         "he_IL": "",
         "it_IT": "",
         "ja_JP": "",
-        "ko_KR": "",
+        "ko_KR": "UI를 숨긴 상태에서 게임 시작",
         "no_NO": "",
         "pl_PL": "",
         "pt_BR": "",
@@ -1525,6 +1525,156 @@
     {
       "ID": "GameListHeaderDeveloper",
       "Translations": {
+        "ar_SA": "",
+        "de_DE": "",
+        "el_GR": "",
+        "en_US": "Developed by {0}",
+        "es_ES": "",
+        "fr_FR": "",
+        "he_IL": "",
+        "it_IT": "",
+        "ja_JP": "",
+        "ko_KR": "",
+        "no_NO": "",
+        "pl_PL": "",
+        "pt_BR": "",
+        "ru_RU": "",
+        "sv_SE": "",
+        "th_TH": "",
+        "tr_TR": "",
+        "uk_UA": "",
+        "zh_CN": "由 {0} 开发",
+        "zh_TW": ""
+      }
+    },
+    {
+      "ID": "GameListHeaderVersion",
+      "Translations": {
+        "ar_SA": "",
+        "de_DE": "",
+        "el_GR": "Έκδοση: {0}",
+        "en_US": "Version: {0}",
+        "es_ES": "Versión: {0}",
+        "fr_FR": "",
+        "he_IL": "",
+        "it_IT": "Versione: {0}",
+        "ja_JP": "バージョン: {0}",
+        "ko_KR": "버전: {0}",
+        "no_NO": "Versjon: {0}",
+        "pl_PL": "Wersja: {0}",
+        "pt_BR": "Versão: {0}",
+        "ru_RU": "Версия: {0}",
+        "sv_SE": "",
+        "th_TH": "เวอร์ชั่น: {0}",
+        "tr_TR": "Sürüm: {0}",
+        "uk_UA": "Версія: {0}",
+        "zh_CN": "版本: {0}",
+        "zh_TW": "版本: {0}"
+      }
+    },
+    {
+      "ID": "GameListHeaderTimePlayed",
+      "Translations": {
+        "ar_SA": "",
+        "de_DE": "Spielzeit:",
+        "el_GR": "Χρόνος:",
+        "en_US": "Play Time:",
+        "es_ES": "Tiempo jugado:",
+        "fr_FR": "Temps de jeu:",
+        "he_IL": "",
+        "it_IT": "Tempo di gioco:",
+        "ja_JP": "プレイ時間:",
+        "ko_KR": "플레이 타임:",
+        "no_NO": "Spilletid:",
+        "pl_PL": "Czas w grze:",
+        "pt_BR": "Tempo de jogo:",
+        "ru_RU": "Время в игре:",
+        "sv_SE": "Speltid:",
+        "th_TH": "เล่นไปแล้ว:",
+        "tr_TR": "Oynama Süresi:",
+        "uk_UA": "Зіграно часу:",
+        "zh_CN": "游玩时长:",
+        "zh_TW": "遊玩時數:"
+      }
+    },
+    {
+      "ID": "GameListHeaderLastPlayed",
+      "Translations": {
+        "ar_SA": "",
+        "de_DE": "Zuletzt gespielt: ",
+        "el_GR": "Παίχτηκε: ",
+        "en_US": "Last Played:",
+        "es_ES": "Jugado por última vez:",
+        "fr_FR": "Dernière partie jouée:",
+        "he_IL": "",
+        "it_IT": "Ultima partita:",
+        "ja_JP": "最終プレイ日時:",
+        "ko_KR": "마지막 플레이:",
+        "no_NO": "Sist Spilt:",
+        "pl_PL": "Ostatnio grane:",
+        "pt_BR": "Último jogo:",
+        "ru_RU": "Последний запуск:",
+        "sv_SE": "Senast spelad:",
+        "th_TH": "เล่นล่าสุด:",
+        "tr_TR": "Son Oynama Tarihi:",
+        "uk_UA": "Востаннє зіграно:",
+        "zh_CN": "最近游玩:",
+        "zh_TW": "最近遊玩:"
+      }
+    },
+    {
+      "ID": "GameListHeaderFileExtension",
+      "Translations": {
+        "ar_SA": "",
+        "de_DE": "Dateiformat: {0}",
+        "el_GR": "Κατάληξη: {0}",
+        "en_US": "Extension: {0}",
+        "es_ES": "Extensión: {0}",
+        "fr_FR": "Extension du Fichier: {0}",
+        "he_IL": "",
+        "it_IT": "Estensione: {0}",
+        "ja_JP": "ファイル拡張子: {0}",
+        "ko_KR": "파일 확장자: {0}",
+        "no_NO": "Fil Eks.: {0}",
+        "pl_PL": "Rozszerzenie pliku: {0}",
+        "pt_BR": "Extensão: {0}",
+        "ru_RU": "Расширение файла: {0}",
+        "sv_SE": "Filänd: {0}",
+        "th_TH": "นามสกุลไฟล์: {0}",
+        "tr_TR": "Dosya Uzantısı: {0}",
+        "uk_UA": "Розширення файлу: {0}",
+        "zh_CN": "扩展名: {0}",
+        "zh_TW": "副檔名: {0}"
+      }
+    },
+    {
+      "ID": "GameListHeaderFileSize",
+      "Translations": {
+        "ar_SA": "",
+        "de_DE": "Dateigröße: {0}",
+        "el_GR": "Μέγεθος Αρχείου: {0}",
+        "en_US": "File Size: {0}",
+        "es_ES": "Tamaño del archivo: {0}",
+        "fr_FR": "Taille du Fichier: {0}",
+        "he_IL": "",
+        "it_IT": "Dimensione file: {0}",
+        "ja_JP": "ファイルサイズ: {0}",
+        "ko_KR": "파일 크기: {0}",
+        "no_NO": "Fil Størrelse: {0}",
+        "pl_PL": "Rozmiar pliku: {0}",
+        "pt_BR": "Tamanho: {0}",
+        "ru_RU": "Размер файла: {0}",
+        "sv_SE": "Filstorlek: {0}",
+        "th_TH": "ขนาดไฟล์: {0}",
+        "tr_TR": "Dosya Boyutu: {0}",
+        "uk_UA": "Розмір файлу: {0}",
+        "zh_CN": "大小: {0}",
+        "zh_TW": "檔案大小: {0}"
+      }
+    },
+    {
+      "ID": "GameListSortDeveloper",
+      "Translations": {
         "ar_SA": "المطور",
         "de_DE": "Entwickler",
         "el_GR": "Προγραμματιστής",
@@ -1548,32 +1698,7 @@
       }
     },
     {
-      "ID": "GameListHeaderVersion",
-      "Translations": {
-        "ar_SA": "الإصدار",
-        "de_DE": "",
-        "el_GR": "Έκδοση",
-        "en_US": "Version",
-        "es_ES": "Versión",
-        "fr_FR": "",
-        "he_IL": "גרסה",
-        "it_IT": "Versione",
-        "ja_JP": "バージョン",
-        "ko_KR": "버전",
-        "no_NO": "Versjon",
-        "pl_PL": "Wersja",
-        "pt_BR": "Versão",
-        "ru_RU": "Версия",
-        "sv_SE": "",
-        "th_TH": "เวอร์ชั่น",
-        "tr_TR": "Sürüm",
-        "uk_UA": "Версія",
-        "zh_CN": "版本",
-        "zh_TW": "版本"
-      }
-    },
-    {
-      "ID": "GameListHeaderTimePlayed",
+      "ID": "GameListSortTimePlayed",
       "Translations": {
         "ar_SA": "وقت اللعب",
         "de_DE": "Spielzeit",
@@ -1598,7 +1723,7 @@
       }
     },
     {
-      "ID": "GameListHeaderLastPlayed",
+      "ID": "GameListSortLastPlayed",
       "Translations": {
         "ar_SA": "آخر مرة لُعبت",
         "de_DE": "Zuletzt gespielt",
@@ -1623,7 +1748,7 @@
       }
     },
     {
-      "ID": "GameListHeaderFileExtension",
+      "ID": "GameListSortFileExtension",
       "Translations": {
         "ar_SA": "صيغة الملف",
         "de_DE": "Dateiformat",
@@ -1648,7 +1773,7 @@
       }
     },
     {
-      "ID": "GameListHeaderFileSize",
+      "ID": "GameListSortFileSize",
       "Translations": {
         "ar_SA": "حجم الملف",
         "de_DE": "Dateigröße",
@@ -1673,7 +1798,7 @@
       }
     },
     {
-      "ID": "GameListHeaderPath",
+      "ID": "GameListSortPath",
       "Translations": {
         "ar_SA": "المسار",
         "de_DE": "Pfad",
@@ -1695,6 +1820,106 @@
         "uk_UA": "Шлях",
         "zh_CN": "路径",
         "zh_TW": "路徑"
+      }
+    },
+    {
+      "ID": "GameListHeaderCompatibilityStatus",
+      "Translations": {
+        "ar_SA": "",
+        "de_DE": "",
+        "el_GR": "",
+        "en_US": "Compatibility:",
+        "es_ES": "",
+        "fr_FR": "",
+        "he_IL": "",
+        "it_IT": "",
+        "ja_JP": "",
+        "ko_KR": "",
+        "no_NO": "",
+        "pl_PL": "",
+        "pt_BR": "",
+        "ru_RU": "",
+        "sv_SE": "",
+        "th_TH": "",
+        "tr_TR": "",
+        "uk_UA": "",
+        "zh_CN": "兼容性:",
+        "zh_TW": ""
+      }
+    },
+    {
+      "ID": "GameListHeaderTitleId",
+      "Translations": {
+        "ar_SA": "",
+        "de_DE": "",
+        "el_GR": "",
+        "en_US": "Title ID:",
+        "es_ES": "",
+        "fr_FR": "",
+        "he_IL": "",
+        "it_IT": "",
+        "ja_JP": "",
+        "ko_KR": "",
+        "no_NO": "",
+        "pl_PL": "",
+        "pt_BR": "",
+        "ru_RU": "",
+        "sv_SE": "",
+        "th_TH": "",
+        "tr_TR": "",
+        "uk_UA": "",
+        "zh_CN": "标题 ID:",
+        "zh_TW": ""
+      }
+    },
+    {
+      "ID": "GameListHeaderHostedGames",
+      "Translations": {
+        "ar_SA": "",
+        "de_DE": "",
+        "el_GR": "",
+        "en_US": "Hosted Games: {0}",
+        "es_ES": "",
+        "fr_FR": "",
+        "he_IL": "",
+        "it_IT": "",
+        "ja_JP": "",
+        "ko_KR": "",
+        "no_NO": "",
+        "pl_PL": "",
+        "pt_BR": "",
+        "ru_RU": "",
+        "sv_SE": "",
+        "th_TH": "",
+        "tr_TR": "",
+        "uk_UA": "",
+        "zh_CN": "服务的游戏: {0}",
+        "zh_TW": ""
+      }
+    },
+    {
+      "ID": "GameListHeaderPlayerCount",
+      "Translations": {
+        "ar_SA": "",
+        "de_DE": "",
+        "el_GR": "",
+        "en_US": "Online Players: {0}",
+        "es_ES": "",
+        "fr_FR": "",
+        "he_IL": "",
+        "it_IT": "",
+        "ja_JP": "",
+        "ko_KR": "",
+        "no_NO": "",
+        "pl_PL": "",
+        "pt_BR": "",
+        "ru_RU": "",
+        "sv_SE": "",
+        "th_TH": "",
+        "tr_TR": "",
+        "uk_UA": "",
+        "zh_CN": "在线玩家: {0}",
+        "zh_TW": ""
       }
     },
     {
@@ -2034,7 +2259,7 @@
         "he_IL": "",
         "it_IT": "",
         "ja_JP": "",
-        "ko_KR": "",
+        "ko_KR": "PPTC 캐시 제거",
         "no_NO": "",
         "pl_PL": "",
         "pt_BR": "",
@@ -2043,7 +2268,7 @@
         "th_TH": "",
         "tr_TR": "",
         "uk_UA": "",
-        "zh_CN": "",
+        "zh_CN": "清理 PPTC 缓存",
         "zh_TW": ""
       }
     },
@@ -2059,7 +2284,7 @@
         "he_IL": "",
         "it_IT": "",
         "ja_JP": "",
-        "ko_KR": "",
+        "ko_KR": "앱의 모든 PPTC 캐시 파일 삭제",
         "no_NO": "",
         "pl_PL": "",
         "pt_BR": "",
@@ -2068,7 +2293,7 @@
         "th_TH": "",
         "tr_TR": "",
         "uk_UA": "",
-        "zh_CN": "",
+        "zh_CN": "删除应用程序的所有 PPTC 缓存",
         "zh_TW": ""
       }
     },
@@ -2384,7 +2609,7 @@
         "he_IL": "",
         "it_IT": "",
         "ja_JP": "",
-        "ko_KR": "",
+        "ko_KR": "선택한 DLC 파일에서 RomFS 추출",
         "no_NO": "Pakk ut RomFS filene fra valgt DLC fil",
         "pl_PL": "",
         "pt_BR": "",
@@ -2520,6 +2745,106 @@
         "uk_UA": "Створити ярлик у каталозі програм macOS, що запускатиме обраний застосунок (гру)",
         "zh_CN": "在 macOS 的应用程序目录中创建一个直接启动此游戏的快捷方式",
         "zh_TW": "在 macOS 的應用程式資料夾中建立捷徑，啟動選取的應用程式"
+      }
+    },
+    {
+      "ID": "GameListContextMenuShowCompatEntry",
+      "Translations": {
+        "ar_SA": "",
+        "de_DE": "",
+        "el_GR": "",
+        "en_US": "Show Compatibility Entry",
+        "es_ES": "",
+        "fr_FR": "",
+        "he_IL": "",
+        "it_IT": "",
+        "ja_JP": "",
+        "ko_KR": "호환성 항목 표시",
+        "no_NO": "",
+        "pl_PL": "",
+        "pt_BR": "",
+        "ru_RU": "",
+        "sv_SE": "",
+        "th_TH": "",
+        "tr_TR": "",
+        "uk_UA": "",
+        "zh_CN": "显示兼容性项目",
+        "zh_TW": ""
+      }
+    },
+    {
+      "ID": "GameListContextMenuShowCompatEntryToolTip",
+      "Translations": {
+        "ar_SA": "",
+        "de_DE": "",
+        "el_GR": "",
+        "en_US": "Show the selected game in the Compatibility List you can normally access via the Help menu.",
+        "es_ES": "",
+        "fr_FR": "",
+        "he_IL": "",
+        "it_IT": "",
+        "ja_JP": "",
+        "ko_KR": "일반적으로 도움말 메뉴를 통해 접근할 수 있는 호환성 목록에 선택한 게임을 표시합니다.",
+        "no_NO": "",
+        "pl_PL": "",
+        "pt_BR": "",
+        "ru_RU": "",
+        "sv_SE": "",
+        "th_TH": "",
+        "tr_TR": "",
+        "uk_UA": "",
+        "zh_CN": "在兼容性列表中显示选定的游戏,您通常可以通过帮助菜单访问。",
+        "zh_TW": ""
+      }
+    },
+    {
+      "ID": "GameListContextMenuShowGameData",
+      "Translations": {
+        "ar_SA": "",
+        "de_DE": "",
+        "el_GR": "",
+        "en_US": "Show Game Info",
+        "es_ES": "",
+        "fr_FR": "",
+        "he_IL": "",
+        "it_IT": "",
+        "ja_JP": "",
+        "ko_KR": "게임 통계 표시",
+        "no_NO": "",
+        "pl_PL": "",
+        "pt_BR": "",
+        "ru_RU": "",
+        "sv_SE": "",
+        "th_TH": "",
+        "tr_TR": "",
+        "uk_UA": "",
+        "zh_CN": "显示游戏信息",
+        "zh_TW": ""
+      }
+    },
+    {
+      "ID": "GameListContextMenuShowGameDataToolTip",
+      "Translations": {
+        "ar_SA": "",
+        "de_DE": "",
+        "el_GR": "",
+        "en_US": "Show stats & details about the currently selected game.",
+        "es_ES": "",
+        "fr_FR": "",
+        "he_IL": "",
+        "it_IT": "",
+        "ja_JP": "",
+        "ko_KR": "그리드 보기 레이아웃에서 누락된 현재 선택된 게임에 대한 다양한 정보를 표시합니다.",
+        "no_NO": "",
+        "pl_PL": "",
+        "pt_BR": "",
+        "ru_RU": "",
+        "sv_SE": "",
+        "th_TH": "",
+        "tr_TR": "",
+        "uk_UA": "",
+        "zh_CN": "显示当前选定游戏的状态与详细信息。",
+        "zh_TW": ""
       }
     },
     {
@@ -3284,7 +3609,7 @@
         "he_IL": "",
         "it_IT": "Aggiornamenti e DLC che fanno riferimento a file mancanti verranno disabilitati automaticamente",
         "ja_JP": "",
-        "ko_KR": "누락된 파일을 참조하는 DLC 및 업데이트가 자동으로 언로드",
+        "ko_KR": "누락된 파일을 참조하는 DLC 및 업데이트가 자동으로 불러오기 취소",
         "no_NO": "DLC og oppdateringer som henviser til manglende filer, vil bli lastet ned automatisk",
         "pl_PL": "",
         "pt_BR": "DLCs e Atualizações que se referem a arquivos ausentes serão descarregadas automaticamente",
@@ -4059,7 +4384,7 @@
         "he_IL": "",
         "it_IT": "",
         "ja_JP": "",
-        "ko_KR": "",
+        "ko_KR": "스웨덴어",
         "no_NO": "",
         "pl_PL": "",
         "pt_BR": "",
@@ -4084,7 +4409,7 @@
         "he_IL": "",
         "it_IT": "",
         "ja_JP": "",
-        "ko_KR": "",
+        "ko_KR": "노르웨이어",
         "no_NO": "Norsk",
         "pl_PL": "",
         "pt_BR": "",
@@ -4159,7 +4484,7 @@
         "he_IL": "",
         "it_IT": "",
         "ja_JP": "",
-        "ko_KR": "",
+        "ko_KR": "매치 시스템 시간",
         "no_NO": "",
         "pl_PL": "",
         "pt_BR": "",
@@ -4168,7 +4493,7 @@
         "th_TH": "",
         "tr_TR": "",
         "uk_UA": "",
-        "zh_CN": "",
+        "zh_CN": "与系统时间同步",
         "zh_TW": ""
       }
     },
@@ -5423,6 +5748,31 @@
       }
     },
     {
+      "ID": "SettingsTabLoggingEnableAvaloniaLogs",
+      "Translations": {
+        "ar_SA": "",
+        "de_DE": "",
+        "el_GR": "",
+        "en_US": "Enable UI Logs",
+        "es_ES": "",
+        "fr_FR": "",
+        "he_IL": "",
+        "it_IT": "",
+        "ja_JP": "",
+        "ko_KR": "",
+        "no_NO": "",
+        "pl_PL": "",
+        "pt_BR": "",
+        "ru_RU": "",
+        "sv_SE": "",
+        "th_TH": "",
+        "tr_TR": "",
+        "uk_UA": "",
+        "zh_CN": "",
+        "zh_TW": ""
+      }
+    },
+    {
       "ID": "SettingsTabLoggingEnableFsAccessLogs",
       "Translations": {
         "ar_SA": "تمكين سجلات الوصول إلى نظام الملفات",
@@ -5795,6 +6145,56 @@
         "uk_UA": "Закрити",
         "zh_CN": "关闭",
         "zh_TW": "關閉"
+      }
+    },
+    {
+      "ID": "SettingsButtonReset",
+      "Translations": {
+        "ar_SA": "",
+        "de_DE": "",
+        "el_GR": "",
+        "en_US": "Reset Settings",
+        "es_ES": "",
+        "fr_FR": "",
+        "he_IL": "",
+        "it_IT": "",
+        "ja_JP": "",
+        "ko_KR": "",
+        "no_NO": "",
+        "pl_PL": "",
+        "pt_BR": "",
+        "ru_RU": "",
+        "sv_SE": "",
+        "th_TH": "",
+        "tr_TR": "",
+        "uk_UA": "",
+        "zh_CN": "重置设置",
+        "zh_TW": ""
+      }
+    },
+    {
+      "ID": "SettingsButtonResetConfirm",
+      "Translations": {
+        "ar_SA": "",
+        "de_DE": "",
+        "el_GR": "",
+        "en_US": "I want to reset my settings.",
+        "es_ES": "",
+        "fr_FR": "",
+        "he_IL": "",
+        "it_IT": "",
+        "ja_JP": "",
+        "ko_KR": "",
+        "no_NO": "",
+        "pl_PL": "",
+        "pt_BR": "",
+        "ru_RU": "",
+        "sv_SE": "",
+        "th_TH": "",
+        "tr_TR": "",
+        "uk_UA": "",
+        "zh_CN": "我要重置我的设置。",
+        "zh_TW": ""
       }
     },
     {
@@ -7709,7 +8109,7 @@
         "he_IL": "",
         "it_IT": "",
         "ja_JP": "",
-        "ko_KR": "",
+        "ko_KR": "비활성화",
         "no_NO": "",
         "pl_PL": "",
         "pt_BR": "",
@@ -7734,7 +8134,7 @@
         "he_IL": "",
         "it_IT": "",
         "ja_JP": "",
-        "ko_KR": "",
+        "ko_KR": "레인보우",
         "no_NO": "",
         "pl_PL": "",
         "pt_BR": "",
@@ -7759,7 +8159,7 @@
         "he_IL": "",
         "it_IT": "",
         "ja_JP": "",
-        "ko_KR": "",
+        "ko_KR": "레인보우 속도",
         "no_NO": "",
         "pl_PL": "",
         "pt_BR": "",
@@ -7768,7 +8168,7 @@
         "th_TH": "",
         "tr_TR": "",
         "uk_UA": "",
-        "zh_CN": "",
+        "zh_CN": "彩虹滚动速度",
         "zh_TW": ""
       }
     },
@@ -7784,7 +8184,7 @@
         "he_IL": "",
         "it_IT": "",
         "ja_JP": "",
-        "ko_KR": "",
+        "ko_KR": "색상",
         "no_NO": "",
         "pl_PL": "",
         "pt_BR": "",
@@ -13034,7 +13434,7 @@
         "he_IL": "",
         "it_IT": "",
         "ja_JP": "",
-        "ko_KR": "",
+        "ko_KR": "다음에서 모든 PPTC 데이터를 제거하려고 합니다:\n\n{0}\n\n계속하시겠습니까?",
         "no_NO": "",
         "pl_PL": "",
         "pt_BR": "",
@@ -13043,7 +13443,7 @@
         "th_TH": "",
         "tr_TR": "",
         "uk_UA": "",
-        "zh_CN": "",
+        "zh_CN": "您正要清理 PPTC 数据:\n\n{0}\n\n您确实要继续吗?",
         "zh_TW": ""
       }
     },
@@ -16348,6 +16748,31 @@
       }
     },
     {
+      "ID": "AvaloniaLogTooltip",
+      "Translations": {
+        "ar_SA": "",
+        "de_DE": "",
+        "el_GR": "",
+        "en_US": "Prints Avalonia (UI) log messages in the console.",
+        "es_ES": "",
+        "fr_FR": "",
+        "he_IL": "",
+        "it_IT": "",
+        "ja_JP": "",
+        "ko_KR": "",
+        "no_NO": "",
+        "pl_PL": "",
+        "pt_BR": "",
+        "ru_RU": "",
+        "sv_SE": "",
+        "th_TH": "",
+        "tr_TR": "",
+        "uk_UA": "",
+        "zh_CN": "",
+        "zh_TW": ""
+      }
+    },
+    {
       "ID": "OpenGlLogLevel",
       "Translations": {
         "ar_SA": "يتطلب تمكين مستويات السجل المناسبة",
@@ -19034,7 +19459,7 @@
         "he_IL": "",
         "it_IT": "",
         "ja_JP": "",
-        "ko_KR": "",
+        "ko_KR": "LED 설정",
         "no_NO": "",
         "pl_PL": "",
         "pt_BR": "",
@@ -21959,7 +22384,7 @@
         "he_IL": "ממשק רשת",
         "it_IT": "Interfaccia di rete:",
         "ja_JP": "ネットワークインタフェース:",
-        "ko_KR": "네트워크 인터페이스:",
+        "ko_KR": "네트워크 인터페이스 :",
         "no_NO": "Nettverksgrensesnitt",
         "pl_PL": "Interfejs sieci:",
         "pt_BR": "Interface de rede:",
@@ -22934,7 +23359,7 @@
         "he_IL": "",
         "it_IT": "",
         "ja_JP": "",
-        "ko_KR": "",
+        "ko_KR": "최종 업데이트 : {0}",
         "no_NO": "Sist oppdatert: {0}",
         "pl_PL": "",
         "pt_BR": "",
@@ -23069,7 +23494,7 @@
         "tr_TR": "",
         "uk_UA": "",
         "zh_CN": "可游玩",
-        "zh_TW": "可暢順遊玩 (Playable)"
+        "zh_TW": "可暢順遊玩"
       }
     },
     {
@@ -23094,7 +23519,7 @@
         "tr_TR": "",
         "uk_UA": "",
         "zh_CN": "进入游戏",
-        "zh_TW": "大致可遊玩 (Ingame)"
+        "zh_TW": "大致可遊玩"
       }
     },
     {
@@ -23119,7 +23544,7 @@
         "tr_TR": "",
         "uk_UA": "",
         "zh_CN": "菜单",
-        "zh_TW": "只開啟至遊戲開始功能表 (Menus)"
+        "zh_TW": "只開啟至遊戲開始功能表"
       }
     },
     {
@@ -23144,7 +23569,7 @@
         "tr_TR": "",
         "uk_UA": "",
         "zh_CN": "启动",
-        "zh_TW": "只能啟動 (Boots)"
+        "zh_TW": "只能啟動"
       }
     },
     {
@@ -23169,7 +23594,132 @@
         "tr_TR": "",
         "uk_UA": "",
         "zh_CN": "什么都没有",
-        "zh_TW": "無法啟動 (Nothing)"
+        "zh_TW": "無法啟動"
+      }
+    },
+    {
+      "ID": "CompatibilityListPlayableTooltip",
+      "Translations": {
+        "ar_SA": "",
+        "de_DE": "",
+        "el_GR": "",
+        "en_US": "Boots and plays without any crashes or GPU bugs of any kind, and at a speed fast enough to reasonably enjoy on an average PC.",
+        "es_ES": "",
+        "fr_FR": "",
+        "he_IL": "",
+        "it_IT": "",
+        "ja_JP": "",
+        "ko_KR": "",
+        "no_NO": "",
+        "pl_PL": "",
+        "pt_BR": "",
+        "ru_RU": "",
+        "sv_SE": "",
+        "th_TH": "",
+        "tr_TR": "",
+        "uk_UA": "",
+        "zh_CN": "启动和游戏时不会出现任何崩溃或任何类型的 GPU bug 且速度足够快可以在一般 PC 上尽情游玩。",
+        "zh_TW": ""
+      }
+    },
+    {
+      "ID": "CompatibilityListIngameTooltip",
+      "Translations": {
+        "ar_SA": "",
+        "de_DE": "",
+        "el_GR": "",
+        "en_US": "Boots and goes in-game but suffers from one or more of the following: crashes, deadlocks, GPU bugs, distractingly bad audio, or is simply too slow. Game still might able to be played all the way through, but not as the game is intended to play.",
+        "es_ES": "",
+        "fr_FR": "",
+        "he_IL": "",
+        "it_IT": "",
+        "ja_JP": "",
+        "ko_KR": "",
+        "no_NO": "",
+        "pl_PL": "",
+        "pt_BR": "",
+        "ru_RU": "",
+        "sv_SE": "",
+        "th_TH": "",
+        "tr_TR": "",
+        "uk_UA": "",
+        "zh_CN": "可以成功启动并进入游戏但可能会遇到以下一种或多种问题: 崩溃、卡死、GPU bug、令人无法接受的音频,或者只是太慢。仍然可以继续进行游戏,但是可能无法达到预期。",
+        "zh_TW": ""
+      }
+    },
+    {
+      "ID": "CompatibilityListMenusTooltip",
+      "Translations": {
+        "ar_SA": "",
+        "de_DE": "",
+        "el_GR": "",
+        "en_US": "Boots and goes past the title screen but does not make it into main gameplay.",
+        "es_ES": "",
+        "fr_FR": "",
+        "he_IL": "",
+        "it_IT": "",
+        "ja_JP": "",
+        "ko_KR": "",
+        "no_NO": "",
+        "pl_PL": "",
+        "pt_BR": "",
+        "ru_RU": "",
+        "sv_SE": "",
+        "th_TH": "",
+        "tr_TR": "",
+        "uk_UA": "",
+        "zh_CN": "可以启动并通过标题画面但是无法进入到主要的游戏流程。",
+        "zh_TW": ""
+      }
+    },
+    {
+      "ID": "CompatibilityListBootsTooltip",
+      "Translations": {
+        "ar_SA": "",
+        "de_DE": "",
+        "el_GR": "",
+        "en_US": "Boots but does not make it past the title screen.",
+        "es_ES": "",
+        "fr_FR": "",
+        "he_IL": "",
+        "it_IT": "",
+        "ja_JP": "",
+        "ko_KR": "",
+        "no_NO": "",
+        "pl_PL": "",
+        "pt_BR": "",
+        "ru_RU": "",
+        "sv_SE": "",
+        "th_TH": "",
+        "tr_TR": "",
+        "uk_UA": "",
+        "zh_CN": "可以启动但是无法通过标题画面。",
+        "zh_TW": ""
+      }
+    },
+    {
+      "ID": "CompatibilityListNothingTooltip",
+      "Translations": {
+        "ar_SA": "",
+        "de_DE": "",
+        "el_GR": "",
+        "en_US": "Does not boot or shows no signs of activity.",
+        "es_ES": "",
+        "fr_FR": "",
+        "he_IL": "",
+        "it_IT": "",
+        "ja_JP": "",
+        "ko_KR": "",
+        "no_NO": "",
+        "pl_PL": "",
+        "pt_BR": "",
+        "ru_RU": "",
+        "sv_SE": "",
+        "th_TH": "",
+        "tr_TR": "",
+        "uk_UA": "",
+        "zh_CN": "无法启动或显示无任何动静。",
+        "zh_TW": ""
       }
     },
     {
@@ -23184,7 +23734,7 @@
         "he_IL": "",
         "it_IT": "",
         "ja_JP": "",
-        "ko_KR": "",
+        "ko_KR": "추출할 DLC 선택",
         "no_NO": "Velg en DLC og hente ut",
         "pl_PL": "",
         "pt_BR": "",
@@ -23194,6 +23744,56 @@
         "tr_TR": "",
         "uk_UA": "",
         "zh_CN": "选择一个要解压的 DLC",
+        "zh_TW": ""
+      }
+    },
+    {
+      "ID": "GameInfoRpcImage",
+      "Translations": {
+        "ar_SA": "",
+        "de_DE": "",
+        "el_GR": "",
+        "en_US": "Rich Presence Image",
+        "es_ES": "",
+        "fr_FR": "",
+        "he_IL": "",
+        "it_IT": "",
+        "ja_JP": "",
+        "ko_KR": "",
+        "no_NO": "",
+        "pl_PL": "",
+        "pt_BR": "",
+        "ru_RU": "",
+        "sv_SE": "",
+        "th_TH": "",
+        "tr_TR": "",
+        "uk_UA": "",
+        "zh_CN": "Rich Presence 图像",
+        "zh_TW": ""
+      }
+    },
+    {
+      "ID": "GameInfoRpcDynamic",
+      "Translations": {
+        "ar_SA": "",
+        "de_DE": "",
+        "el_GR": "",
+        "en_US": "Dynamic Rich Presence",
+        "es_ES": "",
+        "fr_FR": "",
+        "he_IL": "",
+        "it_IT": "",
+        "ja_JP": "",
+        "ko_KR": "",
+        "no_NO": "",
+        "pl_PL": "",
+        "pt_BR": "",
+        "ru_RU": "",
+        "sv_SE": "",
+        "th_TH": "",
+        "tr_TR": "",
+        "uk_UA": "",
+        "zh_CN": "动态 Rich Presence",
         "zh_TW": ""
       }
     }

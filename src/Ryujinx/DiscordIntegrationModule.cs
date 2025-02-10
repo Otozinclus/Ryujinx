@@ -1,19 +1,15 @@
 using DiscordRPC;
 using Gommon;
-using MsgPack;
 using Ryujinx.Ava.Utilities;
 using Ryujinx.Ava.Utilities.AppLibrary;
 using Ryujinx.Ava.Utilities.Configuration;
+using Ryujinx.Ava.Utilities.PlayReport;
 using Ryujinx.Common;
-using Ryujinx.Common.Helper;
 using Ryujinx.Common.Logging;
 using Ryujinx.HLE;
 using Ryujinx.HLE.Loaders.Processes;
 using Ryujinx.Horizon;
-using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
+using Ryujinx.Horizon.Prepo.Types;
 using System.Text;
 
 namespace Ryujinx.Ava
@@ -41,6 +37,9 @@ namespace Ryujinx.Ava
         private static RichPresence _discordPresencePlaying;
         private static ApplicationMetadata _currentApp;
 
+        public static bool HasAssetImage(string titleId) => TitleIDs.DiscordGameAssetKeys.ContainsIgnoreCase(titleId);
+        public static bool HasAnalyzer(string titleId) => PlayReports.Analyzer.TitleIds.ContainsIgnoreCase(titleId);
+
         public static void Initialize()
         {
             _discordPresenceMain = new RichPresence
@@ -56,7 +55,7 @@ namespace Ryujinx.Ava
 
             ConfigurationState.Instance.EnableDiscordIntegration.Event += Update;
             TitleIDs.CurrentApplication.Event += (_, e) => Use(e.NewValue);
-            HorizonStatic.PlayReportPrinted += HandlePlayReport;
+            HorizonStatic.PlayReport += HandlePlayReport;
         }
 
         private static void Update(object sender, ReactiveEventArgs<bool> evnt)
@@ -117,11 +116,6 @@ namespace Ryujinx.Ava
             _currentApp = appMeta;
         }
 
-        private static void UpdatePlayingState()
-        {
-            _discordClient?.SetPresence(_discordPresencePlaying);
-        }
-
         private static void SwitchToMainState()
         {
             _discordClient?.SetPresence(_discordPresenceMain);
@@ -129,27 +123,28 @@ namespace Ryujinx.Ava
             _currentApp = null;
         }
 
-        private static void HandlePlayReport(MessagePackObject playReport)
+        private static void HandlePlayReport(PlayReport playReport)
         {
             if (_discordClient is null) return;
             if (!TitleIDs.CurrentApplication.Value.HasValue) return;
             if (_discordPresencePlaying is null) return;
 
-            PlayReportFormattedValue value = PlayReport.Analyzer.Run(TitleIDs.CurrentApplication.Value, _currentApp, playReport);
+            FormattedValue formattedValue =
+                PlayReports.Analyzer.Format(TitleIDs.CurrentApplication.Value, _currentApp, playReport);
 
-            if (!value.Handled) return;
+            if (!formattedValue.Handled) return;
 
-            if (value.Reset)
-            {
-                _discordPresencePlaying.Details = $"Playing {_currentApp.Title}";
-                Logger.Info?.Print(LogClass.UI, "Reset Discord RPC based on a supported play report value formatter.");
-            }
-            else
-            {
-                _discordPresencePlaying.Details = value.FormattedString;
-                Logger.Info?.Print(LogClass.UI, "Updated Discord RPC based on a supported play report.");
-            }
-            UpdatePlayingState();
+            _discordPresencePlaying.Details = TruncateToByteLength(
+                formattedValue.Reset
+                    ? $"Playing {_currentApp.Title}"
+                    : formattedValue.FormattedString
+            );
+
+            if (_discordClient.CurrentPresence.Details.Equals(_discordPresencePlaying.Details))
+                return; //don't trigger an update if the set presence Details are identical to current
+
+            _discordClient.SetPresence(_discordPresencePlaying);
+            Logger.Info?.Print(LogClass.UI, "Updated Discord RPC based on a supported play report.");
         }
 
         private static string TruncateToByteLength(string input)
