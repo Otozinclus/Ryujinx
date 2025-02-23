@@ -23,6 +23,20 @@ namespace Ryujinx.Ava.Utilities.PlayReport
 
         public required string[] TitleIds { get; init; }
 
+        public const string DefaultDescription = "Formats the details on your Discord presence based on logged data from the game.";
+
+        private string _valueDescription;
+
+        public string Description => _valueDescription ?? DefaultDescription;
+
+        public GameSpec WithDescription(string description)
+        {
+            _valueDescription = description != null
+                ? $"Formats the details on your Discord presence {description}"
+                : null;
+            return this;
+        }
+        
         public List<FormatterSpecBase> ValueFormatters { get; } = [];
 
 
@@ -152,7 +166,7 @@ namespace Ryujinx.Ava.Utilities.PlayReport
         public override bool GetData(Horizon.Prepo.Types.PlayReport playReport, out object result)
         {
             List<MessagePackObject> packedObjects = [];
-            foreach (var reportKey in ReportKeys)
+            foreach (string reportKey in ReportKeys)
             {
                 if (!playReport.ReportData.AsDictionary().TryGetValue(reportKey, out MessagePackObject valuePackObject))
                 {
@@ -176,7 +190,7 @@ namespace Ryujinx.Ava.Utilities.PlayReport
         public override bool GetData(Horizon.Prepo.Types.PlayReport playReport, out object result)
         {
             Dictionary<string, MessagePackObject> packedObjects = [];
-            foreach (var reportKey in ReportKeys)
+            foreach (string reportKey in ReportKeys)
             {
                 if (!playReport.ReportData.AsDictionary().TryGetValue(reportKey, out MessagePackObject valuePackObject))
                     continue;
@@ -197,7 +211,7 @@ namespace Ryujinx.Ava.Utilities.PlayReport
         public string[] ReportKeys { get; init; }
         public Delegate Formatter { get; init; }
 
-        public bool Format(ApplicationMetadata appMeta, Horizon.Prepo.Types.PlayReport playReport,
+        public bool TryFormat(ApplicationMetadata appMeta, Horizon.Prepo.Types.PlayReport playReport,
             out FormattedValue formattedValue)
         {
             formattedValue = default;

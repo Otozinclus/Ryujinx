@@ -10,12 +10,12 @@ using LibHac.Tools.FsSystem;
 using LibHac.Tools.FsSystem.NcaUtils;
 using Ryujinx.Ava.Common.Locale;
 using Ryujinx.Ava.Utilities.Compat;
+using Ryujinx.Ava.Utilities.PlayReport;
 using Ryujinx.Common.Logging;
 using Ryujinx.HLE.FileSystem;
 using Ryujinx.HLE.Loaders.Processes.Extensions;
 using System;
 using System.IO;
-using System.Text;
 using System.Text.Json.Serialization;
 
 namespace Ryujinx.Ava.Utilities.AppLibrary
@@ -35,9 +35,14 @@ namespace Ryujinx.Ava.Utilities.AppLibrary
             {
                 _id = value;
 
-                Compatibility = CompatibilityCsv.Find(Id);
+                Compatibility = CompatibilityCsv.Find(value);
+                RichPresenceSpec = PlayReports.Analyzer.TryGetSpec(IdString, out GameSpec gameSpec) 
+                    ? gameSpec 
+                    : default(Optional<GameSpec>);
             }
         }
+        public Optional<GameSpec> RichPresenceSpec { get; set; }
+        
         public string Developer { get; set; } = "Unknown";
         public string Version { get; set; } = "0";
         public int PlayerCount { get; set; }
@@ -46,7 +51,7 @@ namespace Ryujinx.Ava.Utilities.AppLibrary
         public bool HasLdnGames => PlayerCount != 0 && GameCount != 0;
 
         public bool HasRichPresenceAsset => DiscordIntegrationModule.HasAssetImage(IdString);
-        public bool HasDynamicRichPresenceSupport => DiscordIntegrationModule.HasAnalyzer(IdString);
+        public bool HasDynamicRichPresenceSupport => RichPresenceSpec.HasValue;
         
         public TimeSpan TimePlayed { get; set; }
         public DateTime? LastPlayed { get; set; }
@@ -80,7 +85,7 @@ namespace Ryujinx.Ava.Utilities.AppLibrary
 
         public string LocalizedStatusTooltip =>
             Compatibility.Convert(x => 
-#pragma warning disable CS8509 It is exhaustive for all possible values this can contain.
+#pragma warning disable CS8509 // It is exhaustive for all possible values this can contain.
                 LocaleManager.Instance[x.Status switch
 #pragma warning restore CS8509
                 {

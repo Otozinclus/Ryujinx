@@ -289,7 +289,8 @@ namespace Ryujinx.Headless
 
             DriverUtilities.InitDriverConfig(option.BackendThreading == BackendThreading.Off);
             
-            if (_inputConfiguration.OfType<StandardControllerInputConfig>().Any(ic => ic.Led.UseRainbow))
+            if (_inputConfiguration.OfType<StandardControllerInputConfig>()
+                .Any(ic => ic?.Led?.UseRainbow ?? false))
                 Rainbow.Enable();
 
             while (true)
@@ -357,9 +358,6 @@ namespace Ryujinx.Headless
             return options.GraphicsBackend switch
             {
                 GraphicsBackend.Vulkan => new VulkanWindow(_inputManager, options.LoggingGraphicsDebugLevel, options.AspectRatio, options.EnableMouse, options.HideCursorMode, options.IgnoreControllerApplet),
-                GraphicsBackend.Metal => OperatingSystem.IsMacOS() ?
-                    new MetalWindow(_inputManager, options.LoggingGraphicsDebugLevel, options.AspectRatio, options.EnableKeyboard, options.HideCursorMode, options.IgnoreControllerApplet) :
-                    throw new Exception("Attempted to use Metal renderer on non-macOS platform!"),
                 _ => new OpenGLWindow(_inputManager, options.LoggingGraphicsDebugLevel, options.AspectRatio, options.EnableMouse, options.HideCursorMode, options.IgnoreControllerApplet)
             };
         }

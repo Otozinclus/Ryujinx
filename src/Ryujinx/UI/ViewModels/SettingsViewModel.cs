@@ -13,6 +13,7 @@ using Ryujinx.Ava.UI.Models.Input;
 using Ryujinx.Ava.UI.Windows;
 using Ryujinx.Ava.Utilities.Configuration;
 using Ryujinx.Ava.Utilities.Configuration.System;
+using Ryujinx.Ava.Utilities.Configuration.UI;
 using Ryujinx.Common.Configuration;
 using Ryujinx.Common.Configuration.Multiplayer;
 using Ryujinx.Common.GraphicsDriver;
@@ -48,8 +49,7 @@ namespace Ryujinx.Ava.UI.ViewModels
         private int _graphicsBackendMultithreadingIndex;
         private float _volume;
         [ObservableProperty] private bool _isVulkanAvailable = true;
-        [ObservableProperty] private bool _gameDirectoryChanged;
-        [ObservableProperty] private bool _autoloadDirectoryChanged;
+        [ObservableProperty] private bool _gameListNeedsRefresh;
         private readonly List<string> _gpuIds = [];
         private int _graphicsBackendIndex;
         private int _scalingFilter;
@@ -121,9 +121,14 @@ namespace Ryujinx.Ava.UI.ViewModels
         public bool RememberWindowState { get; set; }
         public bool ShowTitleBar { get; set; }
         public int HideCursor { get; set; }
+        public int UpdateCheckerType { get; set; }
         public bool EnableDockedMode { get; set; }
         public bool EnableKeyboard { get; set; }
         public bool EnableMouse { get; set; }
+        public bool DisableInputWhenOutOfFocus { get; set; }
+        
+        public int FocusLostActionType { get; set; }
+        
         public VSyncMode VSyncMode
         {
             get => _vSyncMode;
@@ -476,6 +481,8 @@ namespace Ryujinx.Ava.UI.ViewModels
             RememberWindowState = config.RememberWindowState;
             ShowTitleBar = config.ShowTitleBar;
             HideCursor = (int)config.HideCursor.Value;
+            UpdateCheckerType = (int)config.UpdateCheckerType.Value;
+            FocusLostActionType = (int)config.FocusLostActionType.Value;
 
             GameDirectories.Clear();
             GameDirectories.AddRange(config.UI.GameDirs.Value);
@@ -495,6 +502,7 @@ namespace Ryujinx.Ava.UI.ViewModels
             EnableDockedMode = config.System.EnableDockedMode;
             EnableKeyboard = config.Hid.EnableKeyboard;
             EnableMouse = config.Hid.EnableMouse;
+            DisableInputWhenOutOfFocus = config.Hid.DisableInputWhenOutOfFocus;
 
             // Keyboard Hotkeys
             KeyboardHotkey = new HotkeyConfig(config.Hid.Hotkeys.Value);
@@ -518,7 +526,7 @@ namespace Ryujinx.Ava.UI.ViewModels
             EnableFsIntegrityChecks = config.System.EnableFsIntegrityChecks;
             DramSize = config.System.DramSize;
             IgnoreMissingServices = config.System.IgnoreMissingServices;
-            IgnoreApplet = config.System.IgnoreApplet;
+            IgnoreApplet = config.System.IgnoreControllerApplet;
 
             // CPU
             EnablePptc = config.System.EnablePtc;
@@ -582,16 +590,10 @@ namespace Ryujinx.Ava.UI.ViewModels
             config.RememberWindowState.Value = RememberWindowState;
             config.ShowTitleBar.Value = ShowTitleBar;
             config.HideCursor.Value = (HideCursorMode)HideCursor;
-
-            if (GameDirectoryChanged)
-            {
-                config.UI.GameDirs.Value = [..GameDirectories];
-            }
-
-            if (AutoloadDirectoryChanged)
-            {
-                config.UI.AutoloadDirs.Value = [..AutoloadDirectories];
-            }
+            config.UpdateCheckerType.Value = (UpdaterType)UpdateCheckerType;
+            config.FocusLostActionType.Value = (FocusLostType)FocusLostActionType;
+            config.UI.GameDirs.Value = [..GameDirectories];
+            config.UI.AutoloadDirs.Value = [..AutoloadDirectories];
 
             config.UI.BaseStyle.Value = BaseStyleIndex switch
             {
@@ -605,14 +607,18 @@ namespace Ryujinx.Ava.UI.ViewModels
             config.System.EnableDockedMode.Value = EnableDockedMode;
             config.Hid.EnableKeyboard.Value = EnableKeyboard;
             config.Hid.EnableMouse.Value = EnableMouse;
+            config.Hid.DisableInputWhenOutOfFocus.Value = DisableInputWhenOutOfFocus;
 
             // Keyboard Hotkeys
             config.Hid.Hotkeys.Value = KeyboardHotkey.GetConfig();
 
             // System
             config.System.Region.Value = (Region)Region;
+            
+            if (config.System.Language.Value != (Language)Language)
+                GameListNeedsRefresh = true;
+            
             config.System.Language.Value = (Language)Language;
-
             if (_validTzRegions.Contains(TimeZone))
             {
                 config.System.TimeZone.Value = TimeZone;
@@ -623,7 +629,7 @@ namespace Ryujinx.Ava.UI.ViewModels
             config.System.EnableFsIntegrityChecks.Value = EnableFsIntegrityChecks;
             config.System.DramSize.Value = DramSize;
             config.System.IgnoreMissingServices.Value = IgnoreMissingServices;
-            config.System.IgnoreApplet.Value = IgnoreApplet;
+            config.System.IgnoreControllerApplet.Value = IgnoreApplet;
 
             // CPU
             config.System.EnablePtc.Value = EnablePptc;
@@ -693,8 +699,6 @@ namespace Ryujinx.Ava.UI.ViewModels
             
             // Dirty Hacks
             config.Hacks.Xc2MenuSoftlockFix.Value = DirtyHacks.Xc2MenuSoftlockFix;
-            config.Hacks.EnableShaderTranslationDelay.Value = DirtyHacks.ShaderTranslationDelayEnabled;
-            config.Hacks.ShaderTranslationDelay.Value = DirtyHacks.ShaderTranslationDelay;
 
             config.ToFileFormat().SaveConfig(Program.ConfigurationPath);
 
@@ -703,8 +707,7 @@ namespace Ryujinx.Ava.UI.ViewModels
 
             SaveSettingsEvent?.Invoke();
 
-            GameDirectoryChanged = false;
-            AutoloadDirectoryChanged = false;
+            GameListNeedsRefresh = false;
         }
 
         private static void RevertIfNotSaved()

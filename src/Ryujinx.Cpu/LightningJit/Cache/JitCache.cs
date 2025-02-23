@@ -27,7 +27,7 @@ namespace Ryujinx.Cpu.LightningJit.Cache
 
         private static readonly Lock _lock = new();
         private static bool _initialized;
-        private static readonly List<ReservedRegion> _jitRegions = new();
+        private static readonly List<ReservedRegion> _jitRegions = [];
         private static int _activeRegionIndex = 0;
 
         [SupportedOSPlatform("windows")]
@@ -48,7 +48,7 @@ namespace Ryujinx.Cpu.LightningJit.Cache
                     return;
                 }
 
-                var firstRegion = new ReservedRegion(allocator, CacheSize);
+                ReservedRegion firstRegion = new(allocator, CacheSize);
                 _jitRegions.Add(firstRegion);
                 _activeRegionIndex = 0;
 
@@ -104,7 +104,7 @@ namespace Ryujinx.Cpu.LightningJit.Cache
             {
                 Debug.Assert(_initialized);
 
-                foreach (var region in _jitRegions)
+                foreach (ReservedRegion region in _jitRegions)
                 {
                     if (pointer.ToInt64() < region.Pointer.ToInt64() ||
                         pointer.ToInt64() >= (region.Pointer + CacheSize).ToInt64())
@@ -160,13 +160,13 @@ namespace Ryujinx.Cpu.LightningJit.Cache
             }
 
             int exhaustedRegion = _activeRegionIndex;
-            var newRegion = new ReservedRegion(_jitRegions[0].Allocator, CacheSize);
+            ReservedRegion newRegion = new(_jitRegions[0].Allocator, CacheSize);
             _jitRegions.Add(newRegion);
             _activeRegionIndex = _jitRegions.Count - 1;
             
             int newRegionNumber = _activeRegionIndex;
 
-            Logger.Warning?.Print(LogClass.Cpu, $"JIT Cache Region {exhaustedRegion} exhausted, creating new Cache Region {newRegionNumber} ({((newRegionNumber + 1) * CacheSize).Bytes()} Total Allocation).");
+            Logger.Warning?.Print(LogClass.Cpu, $"JIT Cache Region {exhaustedRegion} exhausted, creating new Cache Region {newRegionNumber} ({((long)(newRegionNumber + 1) * CacheSize).Bytes()} Total Allocation).");
         
             _cacheAllocator = new CacheMemoryAllocator(CacheSize);
 

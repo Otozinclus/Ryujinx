@@ -133,12 +133,6 @@
                             <ComboBoxItem>
                                 <TextBlock Text="{ext:Locale SettingsTabSystemSystemLanguageBrazilianPortuguese}" />
                             </ComboBoxItem>
-                            <ComboBoxItem>
-                                <TextBlock Text="{ext:Locale SettingsTabSystemSystemLanguageSwedish}" />
-                            </ComboBoxItem>
-                            <ComboBoxItem>
-                                <TextBlock Text="{ext:Locale SettingsTabSystemSystemLanguageNorwegian}" />
-                            </ComboBoxItem>
                         </ComboBox>
                     </StackPanel>
                     <StackPanel
@@ -316,8 +310,8 @@
                     </CheckBox>
                     <CheckBox 
                         IsChecked="{Binding IgnoreApplet}"
-                        ToolTip.Tip="{ext:Locale IgnoreAppletTooltip}">
-                        <TextBlock Text="{ext:Locale SettingsTabSystemIgnoreApplet}" />
+                        ToolTip.Tip="{ext:Locale IgnoreControllerAppletTooltip}">
+                        <TextBlock Text="{ext:Locale SettingsTabSystemIgnoreControllerApplet}" />
                     </CheckBox>
                     <CheckBox
                         IsChecked="{Binding EnableCustomVSyncInterval}"
